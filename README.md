@@ -5,30 +5,37 @@ Instead of duplicating assets manually, this tool lets you batch create, edit, a
 
 ## Features
 
-- Select any ScriptableObject script and batch create instances.
+- Select any concrete ScriptableObject script and batch create instances.
 - Edit multiple ScriptableObjects in one window with a clean UI.
-- Prevent duplicate asset names by auto-generating unique names.
-- Choose output folder inside your Unity project's Assets directory.
+- Prevent duplicate asset names by auto-generating unique, sanitized file names.
+- Choose an output folder inside your Unity project's `Assets` directory.
 - Scrollable list for easy management of large numbers of entries.
 - Safe removal of entries and automatic clearing when changing the script type.
 
 ## Installation
 
-There are two ways to install the ScriptableBatchTool:
+There are three ways to install ScriptableBatchTool:
 
-### 1. Using the .unitypackage
+### 1. Using Unity Package Manager (Git URL)
+
+- In Unity, open `Window > Package Manager`.
+- Click `+ > Add package from git URL...`.
+- Enter `https://github.com/haruchanz64/ScriptableBatchTool.git` and click **Add**.
+- Open the tool from `Tools > ScriptableObject Batch Creator`.
+
+### 2. Using the `.unitypackage`
 
 - Download the latest `.unitypackage` file from the Releases section of this repository.
-- In Unity, go to `Assets > Import Package > Custom Package...`
+- In Unity, go to `Assets > Import Package > Custom Package...`.
 - Select the downloaded `.unitypackage` and import all files.
-- Open the tool from `Tools > ScriptableBatchTool`.
+- Open the tool from `Tools > ScriptableObject Batch Creator`.
 
-### 2. Using the .zip file from the repository
+### 3. Using the `.zip` file from the repository
 
 - Download the repository as a `.zip` file and extract it.
-- Copy the `ScriptableBatchTool` folder into your project's `Assets/Editor` folder.
+- Copy the extracted folder into your project's `Assets` folder (e.g., `Assets/ScriptableBatchTool`). Its `Editor/` assembly definition ensures it is only compiled in the Unity Editor and excluded from player builds.
 - Open Unity and wait for it to compile the scripts.
-- Open the tool from `Tools > ScriptableBatchTool`.
+- Open the tool from `Tools > ScriptableObject Batch Creator`.
 
 ## Usage
 
@@ -38,12 +45,13 @@ There are two ways to install the ScriptableBatchTool:
 4. When ready, hit **Export All** to save all ScriptableObject assets to the selected folder.
 
 ## Requirements
+
 - Unity 2021.1 or higher
 
 ## Notes
 
 - The output folder must be inside the `Assets` folder to ensure assets are correctly registered by Unity.
-- Asset names are automatically made unique to avoid overwriting existing assets.
+- Asset names are automatically sanitized and made unique to avoid overwriting existing assets.
 - Changing the selected script while editing will clear current entries to prevent type mismatches.
 
 ## License

@@ -1,0 +1,23 @@
+{
+  "name": "com.haruchanz64.scriptablebatchtool",
+  "version": "1.0.1",
+  "displayName": "ScriptableBatchTool",
+  "description": "A Unity Editor Window tool designed to streamline the batch creation, editing, and exporting of ScriptableObject instances.",
+  "unity": "2021.1",
+  "license": "MIT",
+  "author": {
+    "name": "Haru",
+    "url": "https://github.com/haruchanz64"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haruchanz64/ScriptableBatchTool.git"
+  },
+  "keywords": [
+    "unity",
+    "editor",
+    "scriptableobject",
+    "batch",
+    "tool"
+  ]
+}
