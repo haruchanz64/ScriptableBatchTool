@@ -39,7 +39,7 @@ There are two ways to install ScriptableBatchTool:
 
 ## Requirements
 
-- Unity 2021.1 or higher
+- Unity 2021.1 or higher (including Unity 6 / `6000.0+`)
 
 ## Notes
 

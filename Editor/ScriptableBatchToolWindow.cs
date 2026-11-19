@@ -12,7 +12,7 @@ namespace HaruChanZ64.ScriptableBatchTool.Editor
         [SerializeField] private string _targetFolder = "Assets";
 
         private Type _targetType;
-        private readonly List<ScriptableWrapper> _items = new();
+        private readonly List<ScriptableWrapper> _items = new List<ScriptableWrapper>();
         private int _nextItemIndex = 1;
 
         private Vector2 _scroll;
@@ -41,7 +41,7 @@ namespace HaruChanZ64.ScriptableBatchTool.Editor
             }
         }
 
-        private void OnDestroy()
+        private void OnDisable()
         {
             ClearItems();
         }
@@ -217,7 +217,7 @@ namespace HaruChanZ64.ScriptableBatchTool.Editor
                     continue;
                 }
 
-                EditorGUILayout.BeginVertical("box");
+                EditorGUILayout.BeginVertical(EditorStyles.helpBox);
 
                 var typeName = _targetType != null ? _targetType.Name : item.Instance.GetType().Name;
                 EditorGUILayout.LabelField($"{typeName} #{i + 1}", EditorStyles.boldLabel);
@@ -269,22 +269,26 @@ namespace HaruChanZ64.ScriptableBatchTool.Editor
             }
 
             EditorGUILayout.LabelField($"4. Export to {_targetFolder}", EditorStyles.miniBoldLabel);
-            if (GUILayout.Button("Export All", GUILayout.Height(30)))
-            {
-                if (!AssetDatabase.IsValidFolder(_targetFolder))
-                {
-                    EditorUtility.DisplayDialog(
-                        "Invalid Output Folder",
-                        $"The folder '{_targetFolder}' does not exist. Please select a valid folder inside Assets.",
-                        "OK"
-                    );
-                    return;
-                }
 
-                var exportedCount = ScriptableBatchExporter.ExportAssets(_items, _targetFolder);
-                if (exportedCount > 0)
+            using (new EditorGUI.DisabledScope(EditorApplication.isCompiling || EditorApplication.isUpdating))
+            {
+                if (GUILayout.Button("Export All", GUILayout.Height(30)))
                 {
-                    ClearItems(destroyUnpersistedInstances: false);
+                    if (!AssetDatabase.IsValidFolder(_targetFolder))
+                    {
+                        EditorUtility.DisplayDialog(
+                            "Invalid Output Folder",
+                            $"The folder '{_targetFolder}' does not exist. Please select a valid folder inside Assets.",
+                            "OK"
+                        );
+                        return;
+                    }
+
+                    var exportedCount = ScriptableBatchExporter.ExportAssets(_items, _targetFolder);
+                    if (exportedCount > 0)
+                    {
+                        ClearItems(destroyUnpersistedInstances: false);
+                    }
                 }
             }
         }
