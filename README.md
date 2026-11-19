@@ -14,7 +14,7 @@ Instead of duplicating assets manually, this tool lets you batch create, edit, a
 
 ## Installation
 
-There are three ways to install ScriptableBatchTool:
+There are two ways to install ScriptableBatchTool:
 
 ### 1. Using Unity Package Manager (Git URL)
 
@@ -23,16 +23,9 @@ There are three ways to install ScriptableBatchTool:
 - Enter `https://github.com/haruchanz64/ScriptableBatchTool.git` and click **Add**.
 - Open the tool from `Tools > ScriptableObject Batch Creator`.
 
-### 2. Using the `.unitypackage`
+### 2. Using the `.zip` file from the repository
 
-- Download the latest `.unitypackage` file from the Releases section of this repository.
-- In Unity, go to `Assets > Import Package > Custom Package...`.
-- Select the downloaded `.unitypackage` and import all files.
-- Open the tool from `Tools > ScriptableObject Batch Creator`.
-
-### 3. Using the `.zip` file from the repository
-
-- Download the repository as a `.zip` file and extract it.
+- Download the repository as a `.zip` file (`Code > Download ZIP`) and extract it.
 - Copy the extracted folder into your project's `Assets` folder (e.g., `Assets/ScriptableBatchTool`). Its `Editor/` assembly definition ensures it is only compiled in the Unity Editor and excluded from player builds.
 - Open Unity and wait for it to compile the scripts.
 - Open the tool from `Tools > ScriptableObject Batch Creator`.
